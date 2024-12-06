@@ -1,0 +1,78 @@
+# General Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Visual Studio Code
+.vscode/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
+
+# Test outputs
+/test-output/
+/surefire-reports/
+/jacoco/
+
+# Compiled class files
+*.class
+
+# Application properties (if sensitive data is stored here)
+application.properties
+application.yml
+
+# Node.js (if using React frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Operating system-specific files
+.DS_Store
+Thumbs.db
+
+# Git specific
+*.rej
+*.lock
+*.idx
+*.pack
+*.old
+*.orig
+*.bak
