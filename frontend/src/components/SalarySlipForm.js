@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SalarySlipPdf from './SalarySlipPdf'; // Import the SalarySlipPdf component
 
 function SalarySlipForm() {
   const [employeeId, setEmployeeId] = useState('');
@@ -12,27 +13,29 @@ function SalarySlipForm() {
       .catch((error) => console.error(error));
   };
 
-  return React.createElement(
-    'form',
-    { onSubmit: handleSubmit },
-    React.createElement(
-      'input',
-      {
-        type: 'number',
-        value: employeeId,
-        onChange: (e) => setEmployeeId(e.target.value),
-        placeholder: 'Employee ID',
-        required: true
-      }
-    ),
-    React.createElement('button', { type: 'submit' }, 'Generate Salary Slip'),
-    salarySlip && React.createElement(
-      'div',
-      null,
-      React.createElement('p', null, `Net Salary: ${salarySlip.netSalary}`),
-      React.createElement('p', null, `PF Deduction: ${salarySlip.pfDeduction}`),
-      React.createElement('p', null, `Professional Tax: ${salarySlip.professionalTax}`)
-    )
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          value={employeeId}
+          onChange={(e) => setEmployeeId(e.target.value)}
+          placeholder="Employee ID"
+          required
+        />
+        <button type="submit">Generate Salary Slip</button>
+      </form>
+
+      {salarySlip && (
+        <div>
+          <p>Net Salary: {salarySlip.netSalary}</p>
+          <p>PF Deduction: {salarySlip.pfDeduction}</p>
+          <p>Professional Tax: {salarySlip.professionalTax}</p>
+          {/* Render the SalarySlipPdf component */}
+          <SalarySlipPdf salarySlip={salarySlip} />
+        </div>
+      )}
+    </div>
   );
 }
 
