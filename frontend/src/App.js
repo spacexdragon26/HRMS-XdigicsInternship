@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import EmployeeForm from './components/EmployeeForm';
+import EmployeeTable from './components/EmployeeTable';
+import SalarySlipForm from './components/SalarySlipForm';
+import SalarySlipPdf from './components/SalarySlipPdf';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const backendUrl = 'http://localhost:8080'; // Specify the backend server URL here
+
+  const handleEmployeeSubmit = function(employee) {
+    // Submit the employee data to the backend API
+    if (employee.id) {
+      // Update employee
+      axios.put(`${backendUrl}/api/employees/${employee.id}`, employee)
+        .then(function() {
+          setSelectedEmployee(null);
+        });
+    } else {
+      // Add new employee
+      axios.post(`${backendUrl}/api/employees`, employee)
+        .then(function() {
+          setSelectedEmployee(null);
+        });
+    }
+  };
+
+  return React.createElement(
+    'div',
+    null,
+    React.createElement(EmployeeForm, {
+      selectedEmployee: selectedEmployee,
+      onSubmit: handleEmployeeSubmit
+    }),
+    React.createElement(EmployeeTable, null),
+    React.createElement(SalarySlipForm, null),
+    selectedEmployee && React.createElement(SalarySlipPdf, { salarySlip: selectedEmployee.salarySlip })
   );
 }
 
