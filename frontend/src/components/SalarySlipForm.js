@@ -28,6 +28,7 @@ function SalarySlipForm() {
 
       {salarySlip && (
         <div>
+          <p>Basic Pay: {salarySlip.basicPay}</p>
           <p>Net Salary: {salarySlip.netSalary}</p>
           <p>PF Deduction: {salarySlip.pfDeduction}</p>
           <p>Professional Tax: {salarySlip.professionalTax}</p>

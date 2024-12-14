@@ -7,6 +7,7 @@ function MyDocument({ salarySlip }) {
       <Page size="A4">
         <Text>Name: {salarySlip.employee.name}</Text>
         <Text>Email: {salarySlip.employee.email}</Text>
+        <Text>Basic Pay: {salarySlip.basicPay}</Text> {/* Added Basic Pay */}
         <Text>Net Salary: {salarySlip.netSalary}</Text>
         <Text>PF Deduction: {salarySlip.pfDeduction}</Text>
         <Text>Professional Tax: {salarySlip.professionalTax}</Text>

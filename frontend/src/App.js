@@ -4,6 +4,7 @@ import EmployeeForm from './components/EmployeeForm';
 import EmployeeTable from './components/EmployeeTable';
 import SalarySlipForm from './components/SalarySlipForm';
 import SalarySlipPdf from './components/SalarySlipPdf';
+import './styles.css';
 
 function App() {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
